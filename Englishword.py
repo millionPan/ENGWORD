@@ -5,12 +5,12 @@
 import asyncio
 import edge_tts
 import streamlit as st
-import random
 import pandas as pd
 import os
-# openpyxl
+# print(openpyxl.__version__)
+# import openpyxl
 # ==================== 内置单词表（可自行修改添加） ====================
-os.chdir("d:/eng_word")
+# os.chdir("d:/eng_word")
 WORDS_ALL=pd.read_excel('./Vocabulary.xlsx')
 
 async def generate_audio(text, voice, rate):
@@ -20,7 +20,7 @@ async def generate_audio(text, voice, rate):
         if chunk["type"] == "audio":
             audio_bytes += chunk["data"]
     return audio_bytes
-import time
+
 def get_audio(word):
     audio = asyncio.run(generate_audio(text=word, voice="en-GB-SoniaNeural", rate='+0%'))
     # time.sleep(0.05)
